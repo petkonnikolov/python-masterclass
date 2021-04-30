@@ -9,3 +9,8 @@
 
 # print("Local time is " + time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()))
 # print("UTC time is " + time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime()))
+import datetime
+
+print(datetime.datetime.today())
+print(datetime.datetime.now())
+print(datetime.datetime.utcnow())
