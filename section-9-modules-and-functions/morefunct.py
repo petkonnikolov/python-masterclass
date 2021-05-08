@@ -13,13 +13,17 @@ def parabola(page, size):
         plot(page, -x, y)
 
 
-def circle(page, radius, g, h):
-    for x in range(g, g + radius):
-        y = h + (math.sqrt(radius ** 2 - ((x-g) ** 2)))
-        plot(page, x, y)
-        plot(page, x, 2 * h -y)
-        plot(page, 2 * g - x, y)
-        plot(page, 2 * g -x, 2 * h -y)
+# modify circle function to allow the color of the circle to be specified
+# and defaults to 'red' if a color is not given.
+def circle(page, radius, g, h, color = 'red'):
+    page.create_oval(g + radius, h + radius, g - radius, h - radius, outline=color, width=1)
+    # for x in range(g * 100, (g + radius) * 100):
+    #     x /= 100
+    #     y = h + (math.sqrt(radius ** 2 - ((x-g) ** 2)))
+    #     plot(page, x, y)
+    #     plot(page, x, 2 * h -y)
+    #     plot(page, 2 * g - x, y)
+    #     plot(page, 2 * g -x, 2 * h -y)
 
 def draw_axes(page):
     page.update()
@@ -44,14 +48,14 @@ draw_axes(canvas)
 
 parabola(canvas, 100)
 parabola(canvas, 200)
-circle(canvas, 100, 100, 100)
-circle(canvas, 100, 100, -100)
-circle(canvas, 100, -100, 100)
-circle(canvas, 100, -100, -100)
-circle(canvas, 10, 30, 30)
-circle(canvas, 10, 30, -30)
-circle(canvas, 10, -30, 30)
-circle(canvas, 10, -30, -30)
+circle(canvas, 100, 100, 100, 'orange')
+circle(canvas, 100, 100, -100, 'blue')
+circle(canvas, 100, -100, 100, 'blue')
+circle(canvas, 100, -100, -100, 'orange')
+circle(canvas, 10, 30, 30, 'blue')
+circle(canvas, 10, 30, -30, 'orange')
+circle(canvas, 10, -30, 30, 'orange')
+circle(canvas, 10, -30, -30, 'blue')
 circle(canvas, 30, 0, 0)
 
 mainWindow.mainloop()
