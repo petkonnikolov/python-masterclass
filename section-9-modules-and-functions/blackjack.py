@@ -10,13 +10,11 @@ except ImportError:
     import Tkinter as tkinter
 
 
-
 def load_images(card_images):
 
     suits = ['heart', 'club', 'diamond', 'spade']
 
     face_cards = ['jack', 'queen', 'king']
-
 
     if tkinter.TkVersion >= 8.6:
 
@@ -25,7 +23,6 @@ def load_images(card_images):
     else:
 
         extension = 'ppm'
-
 
     # for each suit retrieve the images for the cards
 
@@ -39,7 +36,6 @@ def load_images(card_images):
 
             image = tkinter.PhotoImage(file=name)
             card_images.append((card, image,))
-
 
         # next the face cards
 
@@ -71,12 +67,10 @@ def _deal_card(frame):
     return next_card
 
 
-
 def score_hand(hand):
-
     '''Calculate the total of all cards in the list.
 
-    Only one ace can have the value 11, and this will be reduced to 1 if the nad would bust.
+    Only one ace can have the value 11, and this will be reduced to 1 if the hand would bust.
     '''
 
     score = 0
@@ -105,7 +99,6 @@ def score_hand(hand):
     return score
 
 
-
 def deal_dealer():
     dealer_score = score_hand(dealer_hand)
 
@@ -114,7 +107,6 @@ def deal_dealer():
         dealer_score = score_hand(dealer_hand)
 
         dealer_score_label.set(dealer_score)
-
 
     player_score = score_hand(player_hand)
 
@@ -135,20 +127,17 @@ def deal_dealer():
         result_text.set('Draw!')
 
 
-
 def deal_player():
 
     player_hand.append(_deal_card(player_card_frame))
 
     player_score = score_hand(player_hand)
 
-
     player_score_label.set(player_score)
 
     if player_score > 21:
 
         result_text.set('Dealer Wins!')
-
 
 
 def initial_deal():
@@ -159,7 +148,6 @@ def initial_deal():
     dealer_score_label.set(score_hand(dealer_hand))
 
     deal_player()
-
 
 
 def new_game():
@@ -180,7 +168,6 @@ def new_game():
 
     player_hand = []
 
-
     # embedded frame to hold the card images
 
     dealer_card_frame = tkinter.Frame(card_frame, background='green')
@@ -193,11 +180,9 @@ def new_game():
 
     player_card_frame.grid(row=2, column=1, sticky='ew', rowspan=2)
 
-
     result_text.set('')
 
     initial_deal()
-
 
 
 def shuffle():
@@ -205,12 +190,10 @@ def shuffle():
     random.shuffle(deck)
 
 
-
 def play():
     initial_deal()
 
     mainWindow.mainloop()
-
 
 
 mainWindow = tkinter.Tk()
@@ -326,4 +309,3 @@ player_hand = []
 if __name__ == '__main__':
 
     play()
-
